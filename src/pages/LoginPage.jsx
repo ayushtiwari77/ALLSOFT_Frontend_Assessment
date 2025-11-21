@@ -2,11 +2,13 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "../utils/axios";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../store/useUserStore";
 
 const LoginPage = () => {
   const [phonenumber, setPhonenumber] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { setPhoneNumber } = useUserStore();
 
   //on submit functionality
   const handleLogin = async (e) => {
@@ -20,6 +22,7 @@ const LoginPage = () => {
       });
       console.log(response);
       if (response.data.status) {
+        setPhoneNumber(phonenumber);
         navigate("/verify");
         toast.success(response.data.data);
       } else {
