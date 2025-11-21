@@ -8,9 +8,11 @@ const App = () => {
   const { token } = useUserStore();
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/verify" element={<VerifyPage />} />
-      <Route path="/home" element={token ? <HomePage /> : <LoginPage />} />
+      <Route path="/login" element={token ? <HomePage /> : <LoginPage />} />
+      <Route path="/verify" element={token ? <HomePage /> : <VerifyPage />} />
+      <Route path="/" element={token ? <HomePage /> : <LoginPage />} />
+
+      {/* page not found page */}
     </Routes>
   );
 };

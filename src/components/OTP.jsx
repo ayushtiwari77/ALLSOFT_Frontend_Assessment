@@ -94,7 +94,7 @@ export default function OTP() {
 
       if (response.data.status) {
         setUserDetails(response.data.data);
-        navigate("/home");
+        navigate("/");
         toast.success("Logged In SuccessFully");
       } else {
         toast.error(response.data.message);
