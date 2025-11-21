@@ -26,9 +26,9 @@ const Navbar = () => {
               <img src={logo} alt="logo" className="h-16" />
             </Link>
           </div>
-          <div className="flex w-full items-center justify-between px-4">
+          <div className="flex w-full justify-between items-center md:justify-around md:px-4">
             <div>
-              <button
+              {/* <button
                 onClick={() => setOpen(!open)}
                 id="navbarToggler"
                 className={` ${
@@ -38,23 +38,20 @@ const Navbar = () => {
                 <span className="relative my-[6px] block h-[2px] w-[30px] bg-body-color dark:bg-white"></span>
                 <span className="relative my-[6px] block h-[2px] w-[30px] bg-body-color dark:bg-white"></span>
                 <span className="relative my-[6px] block h-[2px] w-[30px] bg-body-color dark:bg-white"></span>
-              </button>
+              </button> */}
               <nav
                 // :className="!navbarOpen && 'hidden' "
                 id="navbarCollapse"
-                className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none lg:dark:bg-transparent ${
-                  !open && "hidden"
-                } `}
+                className={` right-4 top-full w-full rounded-lg bg-transparent px-6 py-5  dark:bg-dark-2 static block max-w-full shadow-none   `}
               >
-                <ul className="block lg:flex ">
-                  <ListItem NavLink="/#">Home</ListItem>
-                  <ListItem NavLink="/#">Payment</ListItem>
-                  <ListItem NavLink="/#">About</ListItem>
-                  <ListItem NavLink="/#">Blog</ListItem>
+                <ul className=" flex flex-row gap-5 ">
+                  <ListItem NavLink="/">Home</ListItem>
+                  <ListItem NavLink="/upload">Upload</ListItem>
+                  <ListItem NavLink="/admin">Admin</ListItem>
                 </ul>
               </nav>
             </div>
-            <div className="hidden justify-end pr-16 sm:flex lg:pr-0">
+            <div className=" justify-end pr-16 sm:flex flex lg:pr-0">
               <button
                 onClick={onLogout}
                 className="px-7 py-3 text-base font-medium bg-red-600 cursor-pointer rounded hover:text-primary "
