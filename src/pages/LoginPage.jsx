@@ -1,11 +1,34 @@
+import { useState } from "react";
+import toast from "react-hot-toast";
+
 const LoginPage = () => {
+  const [phonenumber, setPhonenumber] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  //on submit functionality
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+
+      toast.success(`${phonenumber}`);
+    } catch (error) {
+      //
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen w-screen bg-blue-200">
       <div className="w-full bg-blue-700 h-20 p-2 text-white text-lg flex items-center justify-center">
         <h1 className="text-3xl font-bold ">AllSoft Technologies</h1>
       </div>
       <div className="my-10 w-full h-[70vh] p-2 ">
-        <form className="max-w-2xl mx-auto h-full flex flex-col justify-center">
+        <form
+          onSubmit={handleLogin}
+          className="max-w-2xl mx-auto h-full flex flex-col justify-center"
+        >
           <label
             htmlFor="phone-input"
             className="block mb-2.5  font-semibold text-heading text-lg"
@@ -33,6 +56,7 @@ const LoginPage = () => {
               </svg>
             </div>
             <input
+              onChange={(e) => setPhonenumber(e.target.value)}
               type="text"
               id="phone-input"
               aria-describedby="helper-text-explanation"
@@ -42,14 +66,18 @@ const LoginPage = () => {
               minLength={10}
               placeholder="1234567890"
               required
+              value={phonenumber}
             />
           </div>
           <div className="mt-5 w-full flex justify-center">
             <button
-              type="button"
-              className="cursor-pointer text-white rounded-2xl hover:bg-blue-900 bg-blue-700 bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+              disabled={loading}
+              type="submit"
+              className={` text-white rounded-2xl hover:bg-blue-900 bg-blue-700 bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none ${
+                loading ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
             >
-              Send OTP
+              {loading ? "Generating OTP..." : "Send OTP"}
             </button>
           </div>
         </form>
