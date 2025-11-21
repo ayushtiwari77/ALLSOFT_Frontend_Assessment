@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useUserStore } from "../store/useUserStore";
 import logo from "../assets/allsoft.png";
 import { Link } from "react-router-dom";
@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
   const { handleLogout } = useUserStore();
   const navigate = useNavigate();
   const onLogout = () => {
@@ -44,7 +43,7 @@ const Navbar = () => {
                 id="navbarCollapse"
                 className={` right-4 top-full w-full rounded-lg bg-transparent px-6 py-5  dark:bg-dark-2 static block max-w-full shadow-none   `}
               >
-                <ul className=" flex flex-row gap-5 ">
+                <ul className=" flex flex-row gap-10  ">
                   <ListItem NavLink="/">Home</ListItem>
                   <ListItem NavLink="/upload">Upload</ListItem>
                   <ListItem NavLink="/admin">Admin</ListItem>
@@ -54,7 +53,7 @@ const Navbar = () => {
             <div className=" justify-end pr-16 sm:flex flex lg:pr-0">
               <button
                 onClick={onLogout}
-                className="px-7 py-3 text-base font-medium bg-red-600 cursor-pointer rounded hover:text-primary "
+                className="px-5 py-3   text-xl font-medium bg-red-600 cursor-pointer rounded hover:text-primary "
               >
                 Logout
               </button>
@@ -74,7 +73,7 @@ const ListItem = ({ children, NavLink }) => {
       <li>
         <Link
           to={NavLink}
-          className="flex py-2 text-base font-medium text-body-color hover:text-dark dark:text-dark-6 dark:hover:text-white lg:ml-12 lg:inline-flex  hover:underline"
+          className="text-xl flex py-2  font-medium text-body-color hover:text-dark dark:text-dark-6 dark:hover:text-white lg:ml-12 lg:inline-flex  hover:underline"
         >
           {children}
         </Link>
