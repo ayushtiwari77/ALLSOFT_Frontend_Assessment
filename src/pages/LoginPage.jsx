@@ -1,19 +1,33 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import axios from "../utils/axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [phonenumber, setPhonenumber] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   //on submit functionality
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
+      if (!phonenumber) throw new Error("enter phone number");
 
-      toast.success(`${phonenumber}`);
-    } catch (error) {
-      //
+      const response = await axios.post("/generateOTP", {
+        mobile_number: phonenumber,
+      });
+      console.log(response);
+      if (response.data.status) {
+        navigate("/verify");
+        toast.success(response.data.data);
+      } else {
+        toast.error(response.data.data);
+      }
+    } catch (err) {
+      console.log(err.response.data);
+      toast.error("something went wrong");
     } finally {
       setLoading(false);
     }
