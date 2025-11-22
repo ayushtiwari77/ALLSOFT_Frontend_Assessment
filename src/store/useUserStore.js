@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const useUserStore = create((set) => ({
   phoneNumber: 9340487454,
   token:
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpcF9hZGRyZXNzIjoiNDkuNDcuOS4yNDYiLCJ1bmlxdWVfaWQiOiI5MzQwNDg3NDU0IiwidXNlcl9uYW1lIjoiOTM0MDQ4NzQ1NCIsImFjY2Vzc190eXBlIjoiZW1wIiwibW9iaWxlIjoiOTM0MDQ4NzQ1NCIsImNsaWVudF9pZCI6ImFsbHNvZnQiLCJleHAiOjE3NjYzODMxMzF9.ms6Cea-WoSfBydXsxMgxfaaHZho67I6ethqW8ykhJZk",
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpcF9hZGRyZXNzIjoiNDkuNDcuOS4yNDYiLCJ1bmlxdWVfaWQiOiI5MzQwNDg3NDU0IiwidXNlcl9uYW1lIjoiOTM0MDQ4NzQ1NCIsImFjY2Vzc190eXBlIjoiZW1wIiwibW9iaWxlIjoiOTM0MDQ4NzQ1NCIsImNsaWVudF9pZCI6ImFsbHNvZnQiLCJleHAiOjE3NjYzOTIzNTJ9.Lukco6v8FYrmbm5sLkO7WOTzEqIuAfs3iBP3_zOYyhU",
   user_id: null,
   user_name: null,
   searchedResults: [], //empty array for searched documents
