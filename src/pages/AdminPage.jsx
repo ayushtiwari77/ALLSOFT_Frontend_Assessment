@@ -15,7 +15,7 @@ const AdminPage = () => {
               </label>
               <input
                 type="text"
-                className="focus:outline-1 focus:outline-blue-500 p-2 border-blue-500 rounded border "
+                className="focus:outline-1 w-full focus:outline-blue-500 p-2 border-blue-500 rounded border "
                 id="username"
                 required
                 maxLength={50}
@@ -30,7 +30,7 @@ const AdminPage = () => {
               </label>
               <input
                 type="number"
-                className="focus:outline-1 focus:outline-blue-500 p-2 border-blue-500 rounded border "
+                className="focus:outline-1 w-full focus:outline-blue-500 p-2 border-blue-500 rounded border "
                 id="age"
                 required
                 max={100}
@@ -45,7 +45,7 @@ const AdminPage = () => {
               </label>
               <select
                 id="gender"
-                className="focus:outline-1 focus:outline-blue-500 p-2 border-blue-500 rounded border "
+                className="focus:outline-1 focus:outline-blue-500 p-2 w-full border-blue-500 rounded border "
               >
                 <option value="">--Select an option--</option>
                 <option value="male">Male</option>
@@ -62,7 +62,7 @@ const AdminPage = () => {
               </label>
               <input
                 type="password"
-                className="focus:outline-1 focus:outline-blue-500 p-2 border-blue-500 rounded border "
+                className="focus:outline-1 focus:outline-blue-500 p-2 w-full border-blue-500 rounded border "
                 id="password"
                 required
                 placeholder="Enter your Password"
@@ -76,7 +76,7 @@ const AdminPage = () => {
               </label>
               <input
                 type="tel"
-                className="focus:outline-1 focus:outline-blue-500 p-2 border-blue-500 rounded border "
+                className="focus:outline-1 focus:outline-blue-500 p-2 w-full border-blue-500 rounded border "
                 id="phone"
                 required
                 placeholder="Enter your Phonenumber"
@@ -85,7 +85,7 @@ const AdminPage = () => {
 
             {/* accounttype */}
             <div className="flex flex-col w-full items-start">
-              <fieldset>
+              <fieldset className="flex gap-x-10">
                 <legend>Account Type</legend>
                 <div>
                   <input
@@ -94,7 +94,9 @@ const AdminPage = () => {
                     name="account_type"
                     value="user"
                   />
-                  <label for="user">User</label>
+                  <label className="ml-5" for="user">
+                    User
+                  </label>
                 </div>
 
                 <div>
@@ -104,7 +106,9 @@ const AdminPage = () => {
                     name="account_type"
                     value="admin"
                   />
-                  <label for="admin">Admin</label>
+                  <label className="ml-5" for="admin">
+                    Admin
+                  </label>
                 </div>
               </fieldset>
             </div>

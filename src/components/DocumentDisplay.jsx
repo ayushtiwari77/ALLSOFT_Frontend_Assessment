@@ -129,7 +129,7 @@ const DocumentDisplay = () => {
     return (
       <div
         key={document.document_id}
-        className="flex justify-between items-center p-4 border-b hover:bg-gray-50"
+        className="flex justify-between items-center p-4 border-b hover:bg-rose-300 bg-white "
       >
         <div className="flex-1 min-w-0">
           <p className="font-semibold text-blue-700 truncate">
