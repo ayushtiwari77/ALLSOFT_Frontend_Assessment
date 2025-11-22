@@ -75,8 +75,8 @@ const DocumentDisplay = () => {
     }
   };
 
-  const handleDownload = (document) => {
-    const { file_url } = document;
+  const handleDownload = (documentP) => {
+    const { file_url } = documentP;
     const fileName = getFileName(file_url);
 
     // creating and invisible <a> tag and clicks it to trigger download
@@ -90,14 +90,14 @@ const DocumentDisplay = () => {
   };
 
   const handleDownloadAll = async () => {
-    if (document.length === 0) {
+    if (documents.length === 0) {
       toast("No files to download");
       return;
     }
 
     try {
       const zip = new JSZip();
-      const fetchPromises = DocumentDisplay.map(async (doc) => {
+      const fetchPromises = documents.map(async (doc) => {
         const fileName = getFileName(doc.file_url);
         const response = await fetch(doc.file_url);
         if (!response.ok) {
