@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import axios from "../utils/axios";
 import { useUserStore } from "../store/useUserStore";
+import toast from "react-hot-toast";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 // define filter options
 
 const majorHeads = [
-  { value: "personal", label: "Personal" },
-  { value: "professional", label: "Professional" },
+  { value: "Personal", label: "Personal" },
+  { value: "Professional", label: "Professional" },
 ];
 
 const minorHeads = [
@@ -28,9 +31,8 @@ const initialSearchState = {
 
 const SearchBar = () => {
   const [formData, setFormData] = useState(initialSearchState);
-  const { token } = useUserStore();
+  const { token, setSearchedResults, clearSearchedResults } = useUserStore();
   const [isLoading, setIsLoading] = useState(false);
-  const [searchResults, setSearchResults] = useState(null);
 
   //handling form field changes
   const handleChange = (e) => {
@@ -44,6 +46,44 @@ const SearchBar = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    const payload = {
+      major_head: formData.major_head,
+      minor_head: formData.minor_head,
+      from_date: formData.from_date,
+      to_date: formData.to_date,
+      tag: [{ tag_name: "" }, { tag_name: "" }],
+      uploaded_by: "",
+      start: 0,
+      length: 10,
+      filterId: "",
+      search: {
+        value: "",
+      },
+    };
+
+    try {
+      const response = await axios.post("/searchDocumentEntry", payload, {
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+      });
+
+      if (response.data.status) {
+        setSearchedResults(response.data.data);
+      } else {
+        toast.error(response.data.message);
+        throw new Error(response.data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error(
+        "Failed to fetch search results. Please check the network and API URL."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -139,7 +179,7 @@ const SearchBar = () => {
         </div>
 
         {/* Search Button */}
-        <div className="flex justify-end">
+        <div className="flex gap-5 justify-end">
           <button
             type="submit"
             disabled={isLoading}
@@ -176,6 +216,13 @@ const SearchBar = () => {
             ) : (
               "Search Documents"
             )}
+          </button>
+
+          <button
+            onClick={clearSearchedResults}
+            className="flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white transition duration-150 bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+          >
+            Clear Filters
           </button>
         </div>
       </form>

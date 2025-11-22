@@ -1,4 +1,3 @@
-import { useUserStore } from "../store/useUserStore";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 

@@ -1,10 +1,12 @@
 import { create } from "zustand";
 
 export const useUserStore = create((set) => ({
-  phoneNumber: null,
-  token: "9a8sd7f9a87fsd98a7sdf987a9sdf7a9s8df7a9s8df",
+  phoneNumber: 9340487454,
+  token:
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpcF9hZGRyZXNzIjoiNDkuNDcuOS4yNDYiLCJ1bmlxdWVfaWQiOiI5MzQwNDg3NDU0IiwidXNlcl9uYW1lIjoiOTM0MDQ4NzQ1NCIsImFjY2Vzc190eXBlIjoiZW1wIiwibW9iaWxlIjoiOTM0MDQ4NzQ1NCIsImNsaWVudF9pZCI6ImFsbHNvZnQiLCJleHAiOjE3NjYzODMxMzF9.ms6Cea-WoSfBydXsxMgxfaaHZho67I6ethqW8ykhJZk",
   user_id: null,
   user_name: null,
+  searchedResults: [], //empty array for searched documents
 
   // setting phone number for verification
   setPhoneNumber: (phone) => set(() => ({ phoneNumber: phone })),
@@ -22,4 +24,7 @@ export const useUserStore = create((set) => ({
       user_id: null,
       user_name: null,
     })),
+
+  setSearchedResults: (data) => set(() => ({ searchedResults: data })),
+  clearSearchedResults: () => set(() => ({ searchedResults: [] })),
 }));
