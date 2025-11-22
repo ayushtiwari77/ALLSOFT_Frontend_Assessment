@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "../utils/axios";
 import { useUserStore } from "../store/useUserStore";
 import toast from "react-hot-toast";
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 
 // define filter options
@@ -87,7 +87,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="p-6 bg-white shadow-xl rounded-xl max-w-4xl mx-auto">
+    <div className="p-6 mt-7 bg-white shadow-xl rounded-xl max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold text-blue-700 mb-6 flex items-center">
         {/*here icon*/} Document Search Filter
       </h2>
@@ -99,7 +99,7 @@ const SearchBar = () => {
               htmlFor="major_head"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              **Major Head**
+              Major Head
             </label>
             <select
               id="major_head"
@@ -108,7 +108,7 @@ const SearchBar = () => {
               onChange={handleChange}
               className="mt-1 block w-full pl-3 pr-10 py-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-sm border"
             >
-              <option value="">-- Select Major Head --</option>
+              <option value="">Select Major Head</option>
               {majorHeads.map((head) => (
                 <option key={head.value} value={head.value}>
                   {head.label}
@@ -123,7 +123,7 @@ const SearchBar = () => {
               htmlFor="minor_head"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              **Minor Head**
+              Minor Head
             </label>
             <select
               id="minor_head"
@@ -132,7 +132,7 @@ const SearchBar = () => {
               onChange={handleChange}
               className="mt-1 block w-full pl-3 pr-10 py-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500 rounded-md shadow-sm border"
             >
-              <option value="">-- Select Minor Head (Optional) --</option>
+              <option value="">Select Minor Head</option>
               {minorHeads.map((head) => (
                 <option key={head.value} value={head.value}>
                   {head.label}
@@ -147,7 +147,7 @@ const SearchBar = () => {
               htmlFor="from_date"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              **From Date**
+              From Date
             </label>
             <input
               type="date"
@@ -165,7 +165,7 @@ const SearchBar = () => {
               htmlFor="to_date"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              **To Date**
+              To Date
             </label>
             <input
               type="date"
@@ -219,7 +219,11 @@ const SearchBar = () => {
           </button>
 
           <button
-            onClick={clearSearchedResults}
+            type="button"
+            onClick={() => {
+              setFormData(initialSearchState);
+              clearSearchedResults();
+            }}
             className="flex items-center justify-center px-6 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white transition duration-150 bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           >
             Clear Filters

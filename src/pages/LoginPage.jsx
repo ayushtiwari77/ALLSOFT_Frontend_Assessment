@@ -20,7 +20,7 @@ const LoginPage = () => {
       const response = await axios.post("/generateOTP", {
         mobile_number: phonenumber,
       });
-      console.log(response);
+
       if (response.data.status) {
         setPhoneNumber(phonenumber);
         navigate("/verify");

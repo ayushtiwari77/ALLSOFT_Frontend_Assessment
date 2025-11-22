@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+/* * {
+  outline: 2px solid red;
+} */
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}

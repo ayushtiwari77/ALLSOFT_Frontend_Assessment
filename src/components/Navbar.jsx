@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`flex w-full items-center justify-center bg-blue-700 text-white dark:bg-dark`}
+      className={`flex w-screen items-center justify-center bg-blue-700 text-white dark:bg-dark mx-auto`}
     >
       <div className="container">
         <div className="relative -mx-4 flex items-center justify-between">
